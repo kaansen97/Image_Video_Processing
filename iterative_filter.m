@@ -11,19 +11,30 @@ for c = 1:5
      im_filt=imbilatfilt(im_filt,degsmooth,sigma);
 end
 
-subplot(2,2,1);
-imshow(im_arch);
-title('Input image')
+gaus_once=imgaussfilt(im_arch,6);
+im_gauss=imgaussfilt(im_arch,2);
 
-subplot(2,2,2);
+for c = 1:5
+    im_gauss=imgaussfilt(im_gauss,2);
+end
+
+% subplot(2,2,1);
+% imshow(im_arch);
+% title('Input image')
+
+subplot(2,2,1);
 imshow(filtered_once);
 title('Image filtered once with sigma=6')
 
-subplot(2,2,4);
+subplot(2,2,2);
 imshow(im_filt);
 title('Image filtered 10 times with sigma=2')
 
-sharp=im_arch+(im_arch-im_filt);
+
 subplot(2,2,3);
-imshow(sharp);
-title('Image Sharpened')
+imshow(gaus_once);
+title('Image gaussian once with sigma=6')
+
+subplot(2,2,4);
+imshow(im_gauss);
+title('Image gaussian with 10 times sigma=2')
