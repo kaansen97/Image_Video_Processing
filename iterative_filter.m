@@ -6,16 +6,12 @@ degsmooth=8;
 
 im_filt=imbilatfilt(im_arch,degsmooth,sigma);
 filtered_once=imbilatfilt(im_arch,8,6);
-
-for c = 1:5
-     im_filt=imbilatfilt(im_filt,degsmooth,sigma);
-end
-
 gaus_once=imgaussfilt(im_arch,6);
 im_gauss=imgaussfilt(im_arch,2);
 
-for c = 1:5
-    im_gauss=imgaussfilt(im_gauss,2);
+for c = 1:9
+     im_filt=imbilatfilt(im_filt,degsmooth,sigma);
+     im_gauss=imgaussfilt(im_gauss,2);
 end
 
 % subplot(2,2,1);
